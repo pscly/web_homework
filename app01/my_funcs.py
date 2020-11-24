@@ -26,15 +26,18 @@ def get_tou(request, now_tou):
     username = request.session.get('username')
     if username:
         user_obj = models.User.objects.filter(username=username).first()
-        user_type = user_obj.get_user_type_display()
-        user_type_num = user_obj.user_type
+        is_vip = user_obj.is_vip
+        is_root = user_obj.is_root
+        # user_type_num = user_obj.user_type
         return {
             'now_tou': now_tou,
             'username': username,
             'user_obj': user_obj,
             'ip_addr': ip_addr,
-            'user_type': user_type,
-            'user_type_num': user_type_num,
+            'is_root': is_root,
+            'is_vip': is_vip,
+            # 'user_type': user_type,
+            # 'user_type_num': user_type_num,
         }
 
     return {

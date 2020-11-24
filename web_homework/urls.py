@@ -27,12 +27,14 @@ urlpatterns = [
                   url(r'^index/', views.index),
                   url(r'^home/', views.home),
                   url(r'^logout/', views.logout),
+                  url(r'^file_share/', views.file_share),
                   url(r'^user/(.*)/', views.user_home),  # user
                   url(r'^user_guanli', views.user_guanli),
                   url(r'^project_gl/', views.project_guanli),
                   url(r'^project_add/', views.project_add),
                   url(r'^project_user_edit/(.*)/', views.project_user_edit),  # todo 3
                   url(r'^project_edit/(.*)/', views.project_edit),     # todo 2
+                  url(r'^qndxx', views.qndxx),
                   url(r'^$', views.index),
 
                   # url(r'', views.wu),             #

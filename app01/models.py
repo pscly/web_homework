@@ -1,43 +1,45 @@
 from django.db import models
 
-
 # Create your models here.
+
+class Commodity(models.Model):
+    title = models.CharField(max_length=64)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    img_path = models.FileField(upload_to='img/Com')
+    text = models.TextField()
 
 
 class User(models.Model):
     username = models.CharField(max_length=64)
     password = models.CharField(max_length=64)
-    number_1 = models.IntegerField()    # 用户的工号
 
-    choices = [
-        (1, '最高管理员'),
-        (2, '项目经理'),
-        (3, '标注员'),
-        (4, '质检员'),
-    ]
-    user_type = models.IntegerField(choices=choices, default=4)    # 用户的类型
-    # my_project = models.ManyToManyField(to='Projects')  # 对应的项目信息(多对多)
+    is_root = models.BooleanField(default=0)
+    is_vip = models.BooleanField(default=0)
 
-    user_ico = models.FileField(upload_to='user_ico/%Y/',default='user_ico/01default.jpg')  # 实际上的用户目录是MEDIA_URL + user_ico
+    money = models.DecimalField(max_digits=12, decimal_places=2, default=10.00)
+    user_ico = models.FileField(upload_to='user_ico/%Y/', default='user_ico/01default.jpg')  # 实际上的用户目录是MEDIA_URL + user_ico
 
-    is_disabled = models.BooleanField(default=0)  # 是否将用户禁用
-    is_who = models
+    is_ban = models.BooleanField(default=0)
 
 
-class Projects(models.Model):
-    project_name = models.CharField(max_length=64)
-    project_text = models.TextField(null=True)  # 项目的详细信息
-    project_jindu = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)  # 项目的总体进度
-    # project_jindu = models.IntegerField(default=0)  # 项目的总体进度
-    is_over = models.BooleanField(default=0)  # 项目是否完成
-    to_user = models.ManyToManyField(to='User', null=True)  # 这个项目对应的用户
-    is_disabled = models.BooleanField(default=0)  # 是否禁用(删除)项目
+class Files(models.Model):
+    file_name = models.CharField(max_length=255)
+    file_path_name = models.CharField(max_length=255)
+    file_path = models.FileField(upload_to='user_file/%Y_%m/')
+    file_date = models.DateTimeField(auto_now_add=True)
+    is_look = models.BooleanField(default=1)
+
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # 价格
+    count_click = models.IntegerField(default=0)    # 点击的次数
+
+    user = models.ForeignKey(to='User')
+
+    # lei_xing = models.ManyToManyField(to='Fen_lei', null=True) #
+    is_ban = models.BooleanField(default=0)
 
 
-class Today_work(models.Model):
-    project_name = models.OneToOneField(to='Projects')    # 什么项目
-    user = models.OneToOneField(to='User')  # 谁
-    project_jindu = models.DecimalField(max_digits=6, decimal_places=4)  # 今天的项目进度
-    now_day = models.DateField(auto_now_add=True)   # 今天是哪天
-
+class Fen_lei(models.Model):
+    fen_lei_name = models.CharField(max_length=255)
+    count_click_1 = models.IntegerField()
+    bei_zhu = models.CharField(max_length=255, default='')
 

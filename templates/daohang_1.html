@@ -11,11 +11,14 @@
             <li class="nav-item" id="t_index">
                 <a class="nav-link" href="/index">首页 <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item" id="project_guanli">
-                <a class="nav-link" href="/project_gl">项目管理</a>
+            <li class="nav-item" id="t_shop">
+                <a class="nav-link disabled" href="/shop">购物</a>
             </li>
             <li class="nav-item" id="t_file_share">
-                <a class="nav-link " href="#">我的项目</a>
+                <a class="nav-link " href="/file_share">文件分享</a>
+            </li>
+            <li class="nav-item" id="t_file_share">
+                <a class="nav-link " href="/qndxx">青年大学习</a>
             </li>
 
             <li>
@@ -28,14 +31,13 @@
         </ul>
 
         {% if user_obj.username %}
-
-            {% if user_obj.user_type < 3 %}
+            {% if user_obj.is_root %}
                 <span data-toggle="tooltip" title="我不会将你的地址交给任何人">访问地址{{ ip_addr }}</span>
             {% endif %}
 
             <div class="btn-group" style="margin-left: 15px;">
                 <a href="/user/{{ user_obj.username }}">
-                    <button type="button" class="btn btn-success"  data-toggle="tooltip" title="{{ user_type }}">
+                    <button type="button" class="btn btn-success">
                         <img src="{{ MEDIA_URL }}{{ user_obj.user_ico }}" alt=""
                              style="width: 30px; height: 30px; border-radius: 75%;">
                         {{ user_obj.username }}
@@ -46,10 +48,10 @@
                     <span class="sr-only">切换下拉列表</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" style="">
-                    {% if user_obj.user_type == 1 %}
+                    {% if user_obj.is_root %}
                         <a class="dropdown-item" href="#">管理员操作</a>
                     {% endif %}
-
+                    <a class="dropdown-item" href="/moneys">{{ user_obj.money }}￥</a>
                     <a class="dropdown-item" href="/user_guanli">个人中心</a>
                     <a class="dropdown-item" href="#">333</a>
                     <div class="dropdown-divider"></div>

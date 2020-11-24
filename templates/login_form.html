@@ -24,39 +24,18 @@
 
 
 
-        <div style="margin: 30px;">
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="user_type" class="custom-control-input" value="1">
-                <label class="custom-control-label" for="customRadioInline1">最高管理员</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="user_type" class="custom-control-input" value="2">
-                <label class="custom-control-label" for="customRadioInline2">项目经理</label>
-            </div>
-
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline3" name="user_type" class="custom-control-input" value="3">
-                <label class="custom-control-label" for="customRadioInline3">标注员</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline4" name="user_type" class="custom-control-input" value="4"
-                       checked="true">
-                <label class="custom-control-label" for="customRadioInline4">质检员</label>
-            </div>
-        </div>
-
 
 
 
 
         <div>
 
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="img_yzm" id="img_yzm" placeholder="请输入验证码">
+            <div class="input-group mb-3" style="margin-top: 40px;">
+                <input type="text" class="form-control" name="img_yzm" id="img_yzm" placeholder="请输入验证码(纯数字)">
                 <div class="input-group-append">
-                    <button type="button" id="img_yzm_btn" class="btn btn-outline-secondary" style=" padding: 0px;"><img
+                    <button type="button" id="img_yzm_btn" class="btn btn-outline-secondary" style="  padding: 0px;"><img
                             id="img_yzm_img"
-                            style="width: 60px;"
+                            style="width: 100px;"
                             src="data:image/png;base64,{{ yzm_img_2 }}"
                             alt=""></button>
                 </div>
@@ -64,24 +43,24 @@
                 <div class="invalid-feedback" id="cuowu_2">验证码错误</div>
             </div>
 
-            <div class="input-group">
-                <input type="tel" name="phone" class="form-control" id="phone_num" disabled="disabled"
-                       placeholder="请输入你的手机号">
-                <div class="input-group-append">
-                    <input type="button" class="btn btn-outline-secondary" id="yzm_phone" disabled="disabled"
-                           value="获取验证码">
-
-                </div>
-                <div class="valid-feedback" id="dui_3"></div>
-                <div class="invalid-feedback" id="cuowu_3">手机号格式错误</div>
-            </div>
-
-
-        <div class="form-group" >
-            <input type="text" class="form-control" id="yzm_phone_input" disabled="disabled" placeholder="请输入手机验证码">
-            <div class="valid-feedback">ok</div>
-            <div class="invalid-feedback" id="cuowu_4">手机验证码错误</div>
-        </div>
+{#            <div class="input-group">#}
+{#                <input type="tel" name="phone" class="form-control" id="phone_num" disabled="disabled"#}
+{#                       placeholder="请输入你的手机号">#}
+{#                <div class="input-group-append">#}
+{#                    <input type="button" class="btn btn-outline-secondary" id="yzm_phone" disabled="disabled"#}
+{#                           value="获取验证码">#}
+{##}
+{#                </div>#}
+{#                <div class="valid-feedback" id="dui_3"></div>#}
+{#                <div class="invalid-feedback" id="cuowu_3">手机号格式错误</div>#}
+{#            </div>#}
+{##}
+{##}
+{#        <div class="form-group" >#}
+{#            <input type="text" class="form-control" id="yzm_phone_input" disabled="disabled" placeholder="请输入手机验证码">#}
+{#            <div class="valid-feedback">ok</div>#}
+{#            <div class="invalid-feedback" id="cuowu_4">手机验证码错误</div>#}
+{#        </div>#}
 
         </div>
 

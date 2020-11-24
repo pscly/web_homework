@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 # from cly_1.ip import *
+from app01.cly_1.fenyeqi import *
 from app01.cly_1 import funcs_1
 from app01 import models
 from django.core.files import File
@@ -185,16 +186,17 @@ def reg(request):
         if user_obj:
             return redirect('/reg')
 
-        if not user_type.isdecimal():
-            return redirect('/reg')
-        user_type = int(user_type)
+        # if not user_type.isdecimal():
+        #     return redirect('/reg')
+        #
+        # user_type = int(user_type)
 
         if files:
             django_file = File(files.get('user_ico'))  # 先读取文件， 然后将其转换为orm可识别的对象
             # # 保存的文件名就会是 用户名+_X_+文件名
             django_file.name = username + '_X_' + django_file.name
 
-            user_obj = models.User(username=username, password=password, user_ico=django_file, user_type=user_type)
+            user_obj = models.User(username=username, password=password, user_ico=django_file)
         else:
             # 如果用户不上传头像，那就直接使用默认的头像
             user_obj = models.User(username=username, password=password)
@@ -218,6 +220,63 @@ def home(request):
         s1 = request.session.get('username')
         return HttpResponse(f'你已经登录了{s1}')
     return HttpResponse('你没有登陆')
+
+
+
+
+
+@login_auth
+def file_share(request):
+    now_tou = 't_file_share'
+    d1 = my_funcs.get_tou(request, now_tou)
+
+    all_user_objs = models.User.objects.filter(is_ban=0)
+    d1['all_user_objs'] = all_user_objs
+
+    if request.method == 'GET':
+        file_objs = models.Files.objects.filter(is_look=1).order_by('-file_date')
+
+        file_objs = my_funcs.set_count_num(file_objs)
+
+        now_page_num = request.GET.get('page', 1)
+
+        page_obj = Pagination(now_page_num, file_objs.count(), 6, 7)
+        page_datas = file_objs[page_obj.start:page_obj.end]
+
+        d1['page_obj'] = page_obj
+        d1['page_datas'] = page_datas
+
+        return render(request, 'file_share.html', d1)
+
+    if request.method == 'POST':
+        file = request.FILES.get('user_up_file')
+        if file:
+            django_file = File(file)
+            file_name = django_file.name
+            django_file.name = d1['username'] + '_X_' + django_file.name  # 文件名字我想保存为  用户名+_X_+文件名
+            # 这里理解起来可能有些绕， file_name 是文件本身的名字， file_path_name 是文件的保存名字  就是加了上面的东西
+            up_file_obj = models.Files(file_name=file_name, file_path_name=django_file.name, file_path=django_file,
+                                       user=d1['user_obj'])
+            up_file_obj.save()
+        return redirect('/file_share')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @login_auth
@@ -309,3 +368,11 @@ def project_edit(request, to_project=None):
         return render(request, 'error.html', d1)
 
     return HttpResponse('project_edit %s' % to_project)
+
+
+@login_auth
+def qndxx(request):
+    # return render(request, 'qndxx.html')
+    qi = 10
+    pian = 5
+    return redirect(f'http://dxx.wwwtop.top/dxx_video?a={qi}&b={pian}&c=1&d=1&z=200s')
