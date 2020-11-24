@@ -1,0 +1,65 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+
+}
+
+.shangfang {
+    /*height: 20%;*/
+    /*border: 1px solid #44df88;*/
+
+}
+
+.bianshang {
+    height: 100%;
+
+}
+
+.sange {
+    height: 150px;
+    width: 100px;
+}
+
+html {
+
+}
+
+
+.test1 {
+    border: 3px red solid;
+}
+
+.text_juzhong {
+    text-align: center;
+}
+
+.cly_tou_1 {
+
+}
+
+.tou_kuang_1 {
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.image1 {
+    margin-top: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+}
+
+.image2 {
+    margin-top: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.y_btn {
+     padding-top: 0px;
+    padding-bottom: 0px;
+}
+

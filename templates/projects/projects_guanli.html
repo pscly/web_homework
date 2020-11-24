@@ -1,0 +1,62 @@
+{% extends 'muban_1.html' %}
+
+
+
+{% block body1 %}
+    <h2 style="text-align: center">项目管理</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <table class="table table-hover" style="text-align: center;">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">项目名</th>
+                        <th scope="col">相关人员</th>
+                        <th scope="col">完成度</th>
+                        <th scope="col">编辑项目</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for project_obj in project_objs %}
+
+                        <tr>
+                            <th scope="row"> {{ project_obj.my_count_num }} </th>
+
+                            <td>{{ project_obj.project_name }}</td>
+
+
+                            {% if project_obj.to_user.username %}
+                                <td data-toggle="tooltip" title="{{ project_obj.to_user.username }}"><a
+                                        href="/project_user_edit/{{ project_obj.id }}">编辑人员</a></td>
+                            {% else %}
+                                <td data-toggle="tooltip" title="该项目目前没有相关人员"><a
+                                        href="/project_user_edit/{{ project_obj.id }}">编辑人员</a></td>
+                            {% endif %}
+                            <td>{{ project_obj.project_jindu }}%</td>
+                            <td><a class="btn btn-warning" href="/project_edit/{{ project_obj.id }}"
+                                   style="padding-top: 0px;padding-bottom: 0px;">编辑项目</a></td>
+                            {#                            class="btn btn-warning"#}
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-2">
+                {% if user_type_num == 1 %}
+                    <center>
+                        <a type="button" href="/project_add" class="btn btn-info" style="margin: 10px;">添加项目</a>
+                        <a type="button" href="#" class="btn btn-danger" style="margin: 10px;">删除项目</a>
+                    </center>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

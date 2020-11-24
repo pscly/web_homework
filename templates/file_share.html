@@ -1,0 +1,139 @@
+{% extends 'muban_1.html' %}
+
+
+{% block body1 %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm">
+
+            </div>
+            <div class="col col-sm" style="text-align: center">
+                <h1>文件分享</h1>
+            </div>
+            <div class="col col-sm"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-0 col-lg-2">
+                {#            <h1 style="text-align: center">筛选器</h1>#}
+{#                TODO 这里写筛选 #}
+{#                <h2>筛选</h2>#}
+
+
+
+{#                    <table class="table">#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <th scope="col">名字</th>#}
+{##}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{##}
+{#                            {% for all_user_obj in all_user_objs %}#}
+{#                                <tr>#}
+{#                                <td>{{ all_user_obj.username }}</td>#}
+{#                                </tr>#}
+{#                            {% endfor %}#}
+{##}
+{##}
+{#                        </tbody>#}
+{#                    </table>#}
+
+
+
+
+            </div>
+            <div class="col-12 col-sm-12 col-lg-8" style="text-align: center;">
+                {#            这里是添加文件？   筛选？ #}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">文件名</th>
+                        <th scope="col">谁上传的</th>
+                        <th scope="col">上传日期</th>
+                        <th scope="col">下载</th>
+                        <th scope="col">多少钱</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for page_data in page_datas %}
+
+                        <tr data-toggle="tooltip" title="{{ page_data.file_name }}">  {# 这里的文件名是鼠标放上去的全程 #}
+                            <th scope="row"> {{ page_data.my_count_num }} </th>
+                            {% if page_data.file_name|length < 20 %}
+                                <td>{{ page_data.file_name }}</td>
+                            {% else %}
+                                <td>{{ page_data.file_name|truncatechars:20 }}</td>
+                            {% endif %}
+
+                            <td>{{ page_data.user.username }}</td>
+                            <td>{{ page_data.file_date }}</td>
+                            <td><a class="file_download_1" target="_blank"
+                                   href="{{ MEDIA_URL }}{{ page_data.file_path }}">下载</a></td>
+                            <td>{{ page_data.price }}￥</td>
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="col-0 col-sm-0 col-lg-2">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col col-sm-2"></div>
+            <div class="col col-sm" style="margin-left: 20%; ">
+
+                {#                {{ page_obj.page_html|safe }}#}
+                <div >{{ page_obj.page_html|safe }}</div>
+
+            </div>
+            <div class="col col-sm-1"></div>
+        </div>
+
+
+        {#        上传#}
+        <div class="row">
+            <div class="col col-sm"></div>
+            <div class="col col-sm">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" name="user_up_file">
+                        <label class="custom-file-label" for="customFile" data-browse="上传文件">上传文件</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-autodisplay: blockwidthauto;"
+                            {#                        style="">提交#}
+                            style="margin-left: 40%; width: 20%">提交
+                    </button>
+                </form>
+            </div>
+            <div class="col col-sm"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js1 %}
+    <script>
+        $('.file_download_1').click(function (a1) {
+            {#alert("点击1");#}
+            {#console.log("点击下载1");#}
+
+            {#return false;#}
+
+            {#a1.preventDefault();#}
+        })
+    </script>
+{% endblock %}
