@@ -1,5 +1,5 @@
 .history
 .vscode
 .idea
-*.js linguist-language=py
+*.js linguist-language=python
 
