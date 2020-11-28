@@ -373,6 +373,12 @@ def project_edit(request, to_project=None):
 @login_auth
 def qndxx(request):
     # return render(request, 'qndxx.html')
-    qi = 10
-    pian = 5
+    d1 = my_funcs.get_tou(request, '青年大学校')
+    user_obj = d1.get('user_obj')
+    user_obj.money = user_obj.money+1
+    user_obj.save()
+
+    qi = 10     # 这个不改
+    pian = 5    # 每周+1
+    # return HttpResponse("qndxx")
     return redirect(f'http://dxx.wwwtop.top/dxx_video?a={qi}&b={pian}&c=1&d=1&z=200s')

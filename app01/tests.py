@@ -26,10 +26,14 @@ if __name__ == "__main__":
     # file_obj_count_ye, file_obj_count_yu = divmod(file_obj_count, 6)
     # print(file_obj_count_ye, file_obj_count_yu)
 
-    objs = models.Files.objects.order_by('-file_date').filter(user=35)
-    for i in objs:
-        print(i.file_name)
+    # objs = models.Files.objects.order_by('-file_date').filter(user=35)
+    # for i in objs:
+    #     print(i.file_name)
 
     # 多对多
 
-
+    for i in range(5):
+        username = input(":>>")
+        password = '123'
+        user_obj = models.User(username=username, password=password)
+        user_obj.save()
