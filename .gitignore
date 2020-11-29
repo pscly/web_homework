@@ -1,5 +1,9 @@
 .history
 .vscode
 .idea
+<<<<<<< HEAD
 *.md linguist-language=python
+=======
+*.js linguist-language=python
+>>>>>>> origin/master
 
