@@ -78,6 +78,9 @@
             <a href="/login" class="link-info">
                 已经有账号了？ 去登录
             </a>
+            <a href="/reg" class="link-info">
+                忘记密码
+            </a>
         </div>
 
     {% elif now_tou == 't_login' %}
@@ -85,8 +88,13 @@
             <a href="/reg" class="link-info">
                 没有账号？ 去注册
             </a>
+            <a href="/reg" class="link-info">
+                忘记密码
+            </a>
         </div>
     {% endif %}
+
+    
 
     {% if now_tou == 't_login' %}
         <button id="btn_1" type="submit" class="btn btn-primary"

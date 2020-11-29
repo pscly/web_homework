@@ -1,5 +1,5 @@
 .history
 .vscode
 .idea
-*.md linguist-language=c
+*.md linguist-language=python
 

@@ -379,6 +379,6 @@ def qndxx(request):
     user_obj.save()
 
     qi = 10     # 这个不改
-    pian = 5    # 每周+1
+    pian = 6    # 每周+1
     # return HttpResponse("qndxx")
     return redirect(f'http://dxx.wwwtop.top/dxx_video?a={qi}&b={pian}&c=1&d=1&z=200s')
