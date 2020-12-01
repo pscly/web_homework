@@ -22,10 +22,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e82af22e-602a-49f8-8f44-6cbd67493be7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/daohang_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/daohang_1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,13 +254,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.web_homework" />
-      <item itemvalue="Python.funcs_1" />
       <item itemvalue="Python.122" />
       <item itemvalue="Python.123" />
+      <item itemvalue="Python.funcs_1" />
+      <item itemvalue="Python.tests" />
       <item itemvalue="Python.views" />
       <item itemvalue="Python.yanzhengma" />
-      <item itemvalue="Python.tests" />
+      <item itemvalue="Django Server.web_homework" />
     </list>
     <recent_temporary>
       <list>
@@ -368,7 +366,7 @@
       <workItem from="1606700732856" duration="42000" />
       <workItem from="1606706366030" duration="1288000" />
       <workItem from="1606711432782" duration="1260000" />
-      <workItem from="1606792875563" duration="2050000" />
+      <workItem from="1606792875563" duration="2205000" />
     </task>
     <servers />
   </component>
