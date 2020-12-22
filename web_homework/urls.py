@@ -32,9 +32,8 @@ urlpatterns = [
                   url(r'^user_guanli', views.user_guanli),
                   url(r'^project_gl/', views.project_guanli),
                   url(r'^project_add/', views.project_add),
-                  url(r'^project_user_edit/(.*)/', views.project_user_edit),  # todo 3
-                  url(r'^project_edit/(.*)/', views.project_edit),     # todo 2
                   url(r'^qndxx', views.qndxx),
+                  url(r'^game', views.game),
                   url(r'^$', views.index),
 
                   # url(r'', views.wu),             #

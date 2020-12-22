@@ -335,50 +335,21 @@ def user_home(request, to_username=None):
 
 
 @login_auth
-def project_user_edit(request, to_project=None):
-    now_tou = '编辑项目相关人员'
-    d1 = my_funcs.get_tou(request, now_tou)
-    user_obj = d1.get('user_obj')
-
-
-    if request.method == 'GET':
-        if not quanxian_auth(request, user_obj, d1, 2):
-            return render(request, 'error.html', d1)
-
-        user_objs = models.User.objects.filter(is_disabled=0, projects=to_project).all()    # 拿到所有在这个项目中的用户
-        project_obj = models.Projects.objects.filter(id=to_project).first()
-        # if user_obj.user_type == 1:
-        for i in user_objs:
-            i.user_type_name = i.get_user_type_display()
-        d1['user_objs'] = user_objs
-        d1['project_obj'] = project_obj
-        return render(request, 'projects/project_user_guanli.html', d1)
-
-    return HttpResponse('project_user_edit %s' % to_project)
-
-
-@login_auth
-def project_edit(request, to_project=None):
-    # TODO 2
-    now_tou = '编辑项目'
-    d1 = my_funcs.get_tou(request, now_tou)
-    user_obj = d1.get('user_obj')
-
-    if not quanxian_auth(request, user_obj, d1, 2):
-        return render(request, 'error.html', d1)
-
-    return HttpResponse('project_edit %s' % to_project)
-
-
-@login_auth
 def qndxx(request):
     # return render(request, 'qndxx.html')
-    d1 = my_funcs.get_tou(request, '青年大学校')
+    d1 = my_funcs.get_tou(request, '青年大学习')
     user_obj = d1.get('user_obj')
     user_obj.money = user_obj.money+1
     user_obj.save()
 
     qi = 10     # 这个不改
-    pian = 6    # 每周+1
+    pian = 7    # 每周+1
     # return HttpResponse("qndxx")
     return redirect(f'http://dxx.wwwtop.top/dxx_video?a={qi}&b={pian}&c=1&d=1&z=200s')
+
+@login_auth
+def game(request):
+    d1 = my_funcs.get_tou(request, 'game')
+    
+    return render(request, 'game.html', d1)
+    # return HttpResponse("<a herf='\\'><br>这里是game")
