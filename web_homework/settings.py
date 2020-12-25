@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'web_homework.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_h2',
+        'NAME': 'web_h3',
         'HOST': '127.0.0.1',
         'PORT': 3306,
         'USER': 'root',

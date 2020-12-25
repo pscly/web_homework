@@ -21,6 +21,8 @@ class User(models.Model):
 
     is_ban = models.BooleanField(default=0)
 
+    qianming = models.CharField(max_length=64)   # 签名
+    wenzhang = models.ForeignKey(to='Wenzhang')
 
 class Files(models.Model):
     file_name = models.CharField(max_length=255)
@@ -34,7 +36,6 @@ class Files(models.Model):
 
     user = models.ForeignKey(to='User')
 
-    # lei_xing = models.ManyToManyField(to='Fen_lei', null=True) #
     is_ban = models.BooleanField(default=0)
 
 
@@ -42,4 +43,13 @@ class Fen_lei(models.Model):
     fen_lei_name = models.CharField(max_length=255)
     count_click_1 = models.IntegerField()
     bei_zhu = models.CharField(max_length=255, default='')
+
+
+class Wenzhang(models.Model):
+    biaoti = models.CharField(max_length=64)
+    zhengwen = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)
+    data_change = models.DateTimeField(auto_now=True)
+
+
 
